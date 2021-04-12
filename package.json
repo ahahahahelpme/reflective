@@ -1,0 +1,31 @@
+{
+  "name": "reflective",
+  "version": "1.0.0",
+  "description": "",
+  "license": "MIT",
+  "author": "tikhiy",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel ./src/index.html"
+  },
+  "dependencies": {
+    "pixi.js": "^6.0.2"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-typescript": "^7.13.0",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "cspell": "^5.3.12",
+    "cspell-dict-ru_ru": "^1.4.0",
+    "eslint": "^7.24.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "format-package": "^6.1.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
+    "parcel": "^2.0.0-beta.2",
+    "prettier": "^2.2.1",
+    "typescript": "^4.3.0-dev.20210412"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "*": "cspell lint",
+  "*.{js,jsx,ts,tsx}": "eslint --fix",
+  "*.{json,prettierrc,yaml,yml}": "prettier --write",
+  "package.json": "format-package --write"
+}
