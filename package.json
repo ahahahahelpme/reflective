@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "license": "MIT",
+  "engines": {
+    "node": "^15.14.0",
+    "pnpm": "^6.0.1"
+  },
   "author": "tikhiy",
   "main": "index.html",
   "scripts": {
+    "build": "parcel build ./src/index.html",
     "start": "parcel ./src/index.html"
   },
   "dependencies": {
@@ -26,6 +31,6 @@
     "lint-staged": "^10.5.4",
     "parcel": "^2.0.0-beta.2",
     "prettier": "^2.2.1",
-    "typescript": "^4.3.0-dev.20210412"
+    "typescript": "next"
   }
 }
