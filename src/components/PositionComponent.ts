@@ -1,14 +1,5 @@
-import { MonoBehaviour } from "../core/classes/MonoBehaviour"
-import { Point } from "pixi.js"
+import { PointComponent, PointComponentProperties } from "./PointComponent"
 
-export namespace PositionComponent {
-  export type Properties = Pick<Point, "x" | "y">
-}
+export type PositionComponentProperties = PointComponentProperties
 
-export class PositionComponent extends MonoBehaviour {
-  position = new Point(this.properties.x, this.properties.y)
-
-  constructor(public properties: PositionComponent.Properties) {
-    super()
-  }
-}
+export class PositionComponent extends PointComponent {}

@@ -1,12 +1,12 @@
-import { application } from "../core/application"
-import { MonoBehaviour } from "../core/classes/MonoBehaviour"
-import { OnCreate } from "../core/hooks/OnCreate"
+import { MonoBehaviour } from "../../packages/core/src/classes/MonoBehaviour"
+import { OnAttach } from "../../packages/core/src/hooks/OnAttach"
+import { application } from "../application"
 import { Container } from "pixi.js"
 
-export class ContainerComponent extends MonoBehaviour implements OnCreate {
-  container = new Container()
+export class ContainerComponent extends MonoBehaviour implements OnAttach {
+  value = new Container()
 
-  onCreate() {
-    application.stage.addChild(this.container)
+  onAttach() {
+    application.stage.addChild(this.value)
   }
 }

@@ -1,5 +1,7 @@
 import { ArrayList } from "./ArrayList"
 
+export type Constructor<T> = new (...args: never[]) => T
+
 /**
  * Базовый класс узла.
  * Имеет методы для перемещения по дереву узлов.
@@ -88,13 +90,11 @@ export class Node {
    *
    * @yields Узел, удовлетворяющий критерию поиска.
    */
-  get(): Generator<Node, undefined, Node>
+  get(): Generator<Node, undefined, undefined>
 
-  get<T extends Node>(
-    T: new (...properties: any[]) => T,
-  ): Generator<T, undefined, T>
+  get<T extends Node>(T: Constructor<T>): Generator<T, undefined, undefined>
 
-  *get<T extends Node>(T?: new (...properties: any[]) => T) {
+  *get<T extends Node>(T?: Constructor<T>) {
     const children = this.children
 
     for (const child of children) {
@@ -112,13 +112,13 @@ export class Node {
    *
    * @yields Узел, удовлетворяющий критерию поиска.
    */
-  getInChildren(): Generator<Node, undefined, Node>
+  getInChildren(): Generator<Node, undefined, undefined>
 
   getInChildren<T extends Node>(
-    T: new (...properties: any[]) => T,
-  ): Generator<T, undefined, T>
+    T: Constructor<T>,
+  ): Generator<T, undefined, undefined>
 
-  *getInChildren<T extends Node>(T?: new (...properties: any[]) => T) {
+  *getInChildren<T extends Node>(T?: Constructor<T>) {
     const children = this.children.slice()
 
     for (const child of children) {
@@ -137,13 +137,13 @@ export class Node {
    *
    * @yields Узел, удовлетворяющий критерию поиска.
    */
-  getInParent(): Generator<Node, undefined, Node>
+  getInParent(): Generator<Node, undefined, undefined>
 
   getInParent<T extends Node>(
-    T: new (...properties: any[]) => T,
-  ): Generator<T, undefined, T>
+    T: Constructor<T>,
+  ): Generator<T, undefined, undefined>
 
-  *getInParent<T extends Node>(T?: new (...properties: any[]) => T) {
+  *getInParent<T extends Node>(T?: Constructor<T>) {
     const ancestors: Node[] = [this]
 
     for (const ancestor of ancestors) {

@@ -1,26 +1,25 @@
-import { MonoBehaviour } from "../core/classes/MonoBehaviour"
-import { OnCreate } from "../core/hooks/OnCreate"
+import { MonoBehaviour } from "../../packages/core/src/classes/MonoBehaviour"
+import { OnAttach } from "../../packages/core/src/hooks/OnAttach"
 import { ContainerComponent } from "./ContainerComponent"
 import { Sprite, SpriteSource } from "pixi.js"
 
-export namespace SpriteComponent {
-  export type Properties = {
-    source: SpriteSource
-  }
+export type SpriteComponentProperties = {
+  source: SpriteSource
 }
 
-export class SpriteComponent extends MonoBehaviour implements OnCreate {
-  sprite = Sprite.from(this.properties.source)
+export class SpriteComponent extends MonoBehaviour implements OnAttach {
+  value: Sprite
 
-  constructor(public properties: SpriteComponent.Properties) {
+  constructor(readonly properties: SpriteComponentProperties) {
     super()
+    this.value = Sprite.from(this.properties.source)
   }
 
-  onCreate() {
-    const container = this.get(ContainerComponent).next().value
+  onAttach() {
+    const container = this.parent?.get(ContainerComponent).next().value
 
     if (container) {
-      container.container.addChild(this.sprite)
+      container.value.addChild(this.value)
     }
   }
 }

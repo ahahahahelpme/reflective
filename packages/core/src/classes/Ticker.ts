@@ -8,7 +8,7 @@ import { GameObject } from "./GameObject"
 /**
  * Игровой цикл.
  */
-export class Ticker extends GameObject implements OnRender, OnUpdate {
+export class Ticker extends GameObject {
   /**
    * Длительность кадра в секундах.
    */
@@ -61,13 +61,13 @@ export class Ticker extends GameObject implements OnRender, OnUpdate {
       const elapsedTime = seconds(this.difference)
 
       if (elapsedTime > 0) {
-        this.onUpdate(elapsedTime)
+        this.propagate<OnUpdate>("onUpdate", elapsedTime)
       }
 
       this.previousTime = this.nextTime
     }
 
-    this.onRender(this.interpolation)
+    this.propagate<OnRender>("onRender", this.interpolation)
 
     if (this.running) {
       this.pendingAnimationFrame = requestAnimationFrame(this.start)

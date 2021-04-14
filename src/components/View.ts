@@ -1,28 +1,25 @@
-import { MonoBehaviour } from "../core/classes/MonoBehaviour"
-import { OnRender } from "../core/hooks/OnRender"
+import { MonoBehaviour } from "../../packages/core/src/classes/MonoBehaviour"
+import { OnRender } from "../../packages/core/src/hooks/OnRender"
 import { ContainerComponent } from "./ContainerComponent"
 import { PositionComponent } from "./PositionComponent"
 import { VelocityComponent } from "./VelocityComponent"
 
 export class View extends MonoBehaviour implements OnRender {
-  container = this.get(ContainerComponent).next().value
-  position = this.get(PositionComponent).next().value
-  velocity = this.get(VelocityComponent).next().value
-
   onRender(interpolation: number) {
-    if (this.container) {
-      const x = this.position?.position.x || 0
-      const y = this.position?.position.y || 0
+    const container = this.parent?.get(ContainerComponent).next().value
+    const position = this.parent?.get(PositionComponent).next().value
+    const velocity = this.parent?.get(VelocityComponent).next().value
 
-      if (this.velocity) {
-        this.container.container.position.x =
-          x + this.velocity.velocity.x * interpolation
+    if (container) {
+      const x = position?.value.x || 0
+      const y = position?.value.y || 0
 
-        this.container.container.position.y =
-          y + this.velocity.velocity.y * interpolation
+      if (velocity) {
+        container.value.position.x = x + velocity.value.x * interpolation
+        container.value.position.y = y + velocity.value.y * interpolation
       } else {
-        this.container.container.position.x = x
-        this.container.container.position.y = y
+        container.value.position.x = x
+        container.value.position.y = y
       }
     }
   }

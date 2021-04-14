@@ -1,3 +1,38 @@
-import { ticker } from "./core/ticker"
+import { GameObject } from "../packages/core/src/classes/GameObject"
+import { AccelerationComponent } from "./components/AccelerationComponent"
+import { ContainerComponent } from "./components/ContainerComponent"
+import { PositionComponent } from "./components/PositionComponent"
+import { Rigidbody } from "./components/Rigidbody"
+import { SpriteComponent } from "./components/SpriteComponent"
+import { VelocityComponent } from "./components/VelocityComponent"
+import { View } from "./components/View"
+import { ticker } from "./ticker"
+import { Point } from "pixi.js"
 
+const Player = () => {
+  const object = new GameObject()
+
+  object.attach(new AccelerationComponent(new Point()))
+  object.attach(new ContainerComponent())
+  object.attach(new PositionComponent(new Point(100, 300)))
+
+  object.attach(
+    new Rigidbody({
+      mass: 1,
+    }),
+  )
+
+  object.attach(
+    new SpriteComponent({
+      source: "https://pixijs.io/examples/examples/assets/bunny.png",
+    }),
+  )
+
+  object.attach(new VelocityComponent(new Point(-2, -10)))
+  object.attach(new View())
+
+  return object
+}
+
+ticker.attach(Player())
 ticker.start()
