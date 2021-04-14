@@ -1,12 +1,26 @@
 import { MonoBehaviour } from "../../packages/core/src/classes/MonoBehaviour"
 import { OnAttach } from "../../packages/core/src/hooks/OnAttach"
-import { application } from "../application"
 import { Container } from "pixi.js"
 
+export type ContainerComponentProperties = {
+  container?: Container
+}
+
 export class ContainerComponent extends MonoBehaviour implements OnAttach {
-  value = new Container()
+  value: Container
+
+  constructor(readonly properties: ContainerComponentProperties = {}) {
+    super()
+    this.value = properties.container || new Container()
+  }
 
   onAttach() {
-    application.stage.addChild(this.value)
+    const parentContainer = this.getComponentInParent(ContainerComponent)
+
+    if (!parentContainer) {
+      return
+    }
+
+    parentContainer.value.addChild(this.value)
   }
 }

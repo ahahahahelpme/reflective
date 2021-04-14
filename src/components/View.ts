@@ -6,9 +6,9 @@ import { VelocityComponent } from "./VelocityComponent"
 
 export class View extends MonoBehaviour implements OnRender {
   onRender(interpolation: number) {
-    const container = this.parent?.get(ContainerComponent).next().value
-    const position = this.parent?.get(PositionComponent).next().value
-    const velocity = this.parent?.get(VelocityComponent).next().value
+    const container = this.getComponent(ContainerComponent)
+    const position = this.getComponent(PositionComponent)
+    const velocity = this.getComponent(VelocityComponent)
 
     if (container) {
       const x = position?.value.x || 0

@@ -144,7 +144,7 @@ export class Node {
   ): Generator<T, undefined, undefined>
 
   *getInParent<T extends Node>(T?: Constructor<T>) {
-    const ancestors: Node[] = [this]
+    const ancestors: Node[] = this.parent ? [this.parent] : []
 
     for (const ancestor of ancestors) {
       if (!T || ancestor instanceof T) {

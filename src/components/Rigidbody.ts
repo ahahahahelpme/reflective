@@ -18,9 +18,9 @@ export class Rigidbody extends MonoBehaviour implements OnUpdate {
   }
 
   onUpdate(elapsedTime: number) {
-    const acceleration = this.parent?.get(AccelerationComponent).next().value
-    const position = this.parent?.get(PositionComponent).next().value
-    const velocity = this.parent?.get(VelocityComponent).next().value
+    const acceleration = this.getComponent(AccelerationComponent)
+    const position = this.getComponent(PositionComponent)
+    const velocity = this.getComponent(VelocityComponent)
 
     if (!acceleration) {
       return

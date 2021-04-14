@@ -16,7 +16,7 @@ export class SpriteComponent extends MonoBehaviour implements OnAttach {
   }
 
   onAttach() {
-    const container = this.parent?.get(ContainerComponent).next().value
+    const container = this.getComponent(ContainerComponent)
 
     if (container) {
       container.value.addChild(this.value)

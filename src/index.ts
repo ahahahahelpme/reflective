@@ -1,4 +1,5 @@
 import { GameObject } from "../packages/core/src/classes/GameObject"
+import { application } from "./application"
 import { AccelerationComponent } from "./components/AccelerationComponent"
 import { ContainerComponent } from "./components/ContainerComponent"
 import { PositionComponent } from "./components/PositionComponent"
@@ -34,5 +35,14 @@ const Player = () => {
   return object
 }
 
-ticker.attach(Player())
+ticker.attach(
+  new ContainerComponent({
+    container: application.stage,
+  }),
+)
+
+const player = Player()
+
+ticker.attach(player)
+player.attach(Player())
 ticker.start()
