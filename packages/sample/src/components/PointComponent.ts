@@ -1,8 +1,7 @@
-import { MonoBehaviour } from "../../packages/core/src/classes/MonoBehaviour"
+import { MonoBehaviour } from "@reflective/core"
 import { Point } from "pixi.js"
 
 export type PointComponentProperties = Pick<Point, "x" | "y">
-
 export class PointComponent extends MonoBehaviour {
   value: Point
 

@@ -2,6 +2,7 @@ import { clamp } from "../functions/clamp"
 import { milliseconds } from "../functions/milliseconds"
 import { seconds } from "../functions/seconds"
 import { OnRender } from "../hooks/OnRender"
+import { OnRequestAnimationFrame } from "../hooks/OnRequestAnimationFrame"
 import { OnUpdate } from "../hooks/OnUpdate"
 import { GameObject } from "./GameObject"
 
@@ -43,6 +44,8 @@ export class Ticker extends GameObject {
    * Запускает цикл.
    */
   start = () => {
+    this.propagate<OnRequestAnimationFrame>("onRequestAnimationFrame")
+
     if (this.stopped) {
       this.previousTime = performance.now()
       this.nextTime = performance.now()

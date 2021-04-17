@@ -26,6 +26,9 @@
     "typescriptreact"
   ],
   "eslint.trace.server": "messages",
+  "files.associations": {
+    ".parcelrc": "json"
+  },
   "files.eol": "\n",
   "typescript.tsdk": "node_modules\\typescript\\lib"
 }

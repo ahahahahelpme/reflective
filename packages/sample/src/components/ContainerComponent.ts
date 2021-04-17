@@ -1,11 +1,9 @@
-import { MonoBehaviour } from "../../packages/core/src/classes/MonoBehaviour"
-import { OnAttach } from "../../packages/core/src/hooks/OnAttach"
+import { MonoBehaviour, OnAttach } from "@reflective/core"
 import { Container } from "pixi.js"
 
 export type ContainerComponentProperties = {
   container?: Container
 }
-
 export class ContainerComponent extends MonoBehaviour implements OnAttach {
   value: Container
 
@@ -15,12 +13,6 @@ export class ContainerComponent extends MonoBehaviour implements OnAttach {
   }
 
   onAttach() {
-    const parentContainer = this.getComponentInParent(ContainerComponent)
-
-    if (!parentContainer) {
-      return
-    }
-
-    parentContainer.value.addChild(this.value)
+    this.getComponentInParent(ContainerComponent)?.value.addChild(this.value)
   }
 }

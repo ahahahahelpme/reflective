@@ -1,9 +1,11 @@
 {
   "name": "@reflective/core",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "license": "MIT",
   "author": "tikhiy",
-  "main": "index.js",
-  "scripts": {}
+  "main": "./src/index.ts",
+  "devDependencies": {
+    "typescript": "next"
+  }
 }

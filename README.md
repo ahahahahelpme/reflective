@@ -4,7 +4,7 @@
 
 ```sh
 # Install the latest version of `node` (probably through `nvm`)
-nvm install <latestVersion>
+nvm install latest
 nvm use <latestVersion>
 
 # Install the latest version of `pnpm`
@@ -14,14 +14,14 @@ npm install pnpm@latest --global
 pnpm install
 
 # Run
-pnpx run start
+pnpm run start
 
 # Build
-pnpx run build
+pnpm run build
 ```
 
 ## Roadmap
 
 - JSDoc auto-generated documentation with custom template.
-- JSX support for defining the GameObject hierarchy
+- JSX support for defining the GameObject hierarchy.
 - Flexible API.

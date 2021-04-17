@@ -1,4 +1,3 @@
-import { GameObject } from "../packages/core/src/classes/GameObject"
 import { application } from "./application"
 import { AccelerationComponent } from "./components/AccelerationComponent"
 import { ContainerComponent } from "./components/ContainerComponent"
@@ -8,6 +7,7 @@ import { SpriteComponent } from "./components/SpriteComponent"
 import { VelocityComponent } from "./components/VelocityComponent"
 import { View } from "./components/View"
 import { ticker } from "./ticker"
+import { GameObject } from "@reflective/core"
 import { Point } from "pixi.js"
 
 const Player = () => {
