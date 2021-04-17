@@ -14,8 +14,8 @@ export class View extends MonoBehaviour implements OnRender {
   velocity?: VelocityComponent
 
   onRender(interpolation: number) {
-    const x = this.position?.value.x || 0
-    const y = this.position?.value.y || 0
+    const x = this.position.value.x || 0
+    const y = this.position.value.y || 0
 
     if (this.velocity) {
       this.container.value.position.x =
