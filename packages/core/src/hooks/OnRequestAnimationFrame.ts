@@ -1,3 +1,3 @@
 export type OnRequestAnimationFrame = {
-  onRequestAnimationFrame(): void
+  onRequestAnimationFrame(frame: number): void
 }

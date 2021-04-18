@@ -41,10 +41,18 @@ export class Ticker extends GameObject {
   protected nextTime = performance.now()
 
   /**
+   * Номер кадра.
+   */
+  protected frame = 0
+
+  /**
    * Запускает цикл.
    */
   start = () => {
-    this.propagate<OnRequestAnimationFrame>("onRequestAnimationFrame")
+    this.propagate<OnRequestAnimationFrame>(
+      "onRequestAnimationFrame",
+      ++this.frame,
+    )
 
     if (this.stopped) {
       this.previousTime = performance.now()

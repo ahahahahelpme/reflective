@@ -1,4 +1,5 @@
 export { GameObject } from "./classes/GameObject"
+export { Input } from "./classes/Input"
 export { MonoBehaviour } from "./classes/MonoBehaviour"
 export { Ticker } from "./classes/Ticker"
 export { clamp } from "./functions/clamp"

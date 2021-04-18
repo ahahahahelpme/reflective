@@ -25,17 +25,20 @@ export class Rigidbody extends MonoBehaviour implements OnUpdate {
   }
 
   onUpdate(elapsedTime: number) {
-    this.acceleration.value.x = 0
-    this.acceleration.value.y = 0
-    this.acceleration.value.x += Rigidbody.GRAVITY.x / this.properties.mass
-    this.acceleration.value.y += Rigidbody.GRAVITY.y / this.properties.mass
-    this.acceleration.value.x += Rigidbody.WIND.x / this.properties.mass
-    this.acceleration.value.y += Rigidbody.WIND.y / this.properties.mass
-    this.acceleration.value.x *= elapsedTime
-    this.acceleration.value.y *= elapsedTime
+    this.applyForce(Rigidbody.GRAVITY)
+    this.applyForce(Rigidbody.WIND)
+    this.acceleration.value.x *= elapsedTime / this.properties.mass
+    this.acceleration.value.y *= elapsedTime / this.properties.mass
     this.velocity.value.x += this.acceleration.value.x
     this.velocity.value.y += this.acceleration.value.y
     this.position.value.x += this.velocity.value.x
     this.position.value.y += this.velocity.value.y
+    this.acceleration.value.x = 0
+    this.acceleration.value.y = 0
+  }
+
+  applyForce(force: Point) {
+    this.acceleration.value.x += force.x
+    this.acceleration.value.y += force.y
   }
 }
