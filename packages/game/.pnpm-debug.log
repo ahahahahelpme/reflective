@@ -1,0 +1,20 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1,
+    "workspacePrefix": "C:\\Users\\V\\reflective"
+  },
+  "1 error pnpm": {
+    "errno": 1,
+    "code": "ELIFECYCLE",
+    "pkgid": "@reflective/sample@1.1.0",
+    "stage": "start",
+    "script": "parcel ./src/index.html",
+    "pkgname": "@reflective/sample",
+    "err": {
+      "name": "Error",
+      "message": "@reflective/sample@1.1.0 start: `parcel ./src/index.html`\nExit status 1",
+      "code": "ELIFECYCLE",
+      "stack": "Error: @reflective/sample@1.1.0 start: `parcel ./src/index.html`\nExit status 1\n    at EventEmitter.<anonymous> (C:\\Users\\V\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\pnpm.cjs:103286:18)\n    at EventEmitter.emit (node:events:369:20)\n    at ChildProcess.<anonymous> (C:\\Users\\V\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\pnpm.cjs:88860:16)\n    at ChildProcess.emit (node:events:369:20)\n    at maybeClose (node:internal/child_process:1067:16)\n    at Process.ChildProcess._handle.onexit (node:internal/child_process:301:5)"
+    }
+  }
+}
